@@ -94,7 +94,7 @@ export default class MyDocument extends Document {
           />
           <meta
             name="msapplication-task"
-            content="name=Timeline;action-uri=/timeline"
+            content="name=Experience;action-uri=/experience"
           />
           <meta name="msapplication-TileImage" content="/logo.png" />
           <meta name="msapplication-TileColor" content="#000000" />

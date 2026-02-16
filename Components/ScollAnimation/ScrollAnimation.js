@@ -10,6 +10,8 @@ const ScrollAnimation = (ScrollElements) => {
   useEffect(() => {
     ScrollElements.forEach((element) => {
       const elem = document.getElementById(element);
+      if (!elem) return; // Skip if element doesn't exist
+      
       if (scrollValue > getPosition(element) - getPosition("About") + 100) {
         elem.style.opacity = "1";
         elem.style.transform = "translateY(0px)";

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { flexCenter } from "../../styles/flexCenter";
 
 export const ContactPage = styled(flexCenter)`
-  height: 100vh;
+  height: 120vh;
   width: 100vw;
   align-items: flex-end;
   background-color: #ffe69a;

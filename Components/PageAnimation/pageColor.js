@@ -11,8 +11,8 @@ const PageColorAnimation = () => {
     let AboutPos = GetPosition("About");
     let ProjectPos = GetPosition("Project");
     let ContactPos = GetPosition("Contact");
-    let TimeLinePos = GetPosition("Path");
-    // Home 0 About 916 Project 1832 Contact 3904 Timeline 2748
+    let ExperiencePos = GetPosition("Experience");
+    // Home 0 About 916 Project 1832 Contact 3904 Experience 2748
     console.log(
       "Home",
       Home,
@@ -22,8 +22,8 @@ const PageColorAnimation = () => {
       ProjectPos,
       "Contact",
       ContactPos,
-      "Timeline",
-      TimeLinePos
+      "Experience",
+      ExperiencePos
     );
     if (position > Home && position < AboutPos - AboutPos / 2) {
       // Body.style.backgroundColor = "#c1d5a4";
@@ -37,12 +37,12 @@ const PageColorAnimation = () => {
       // Body.style.backgroundColor = "#ffd07f";
     } else if (
       position > ProjectPos - AboutPos / 2 &&
-      position < TimeLinePos - AboutPos / 2
+      position < ExperiencePos - AboutPos / 2
     ) {
       // Body.style.backgroundColor = "#afb4ff";
       Body.style.backgroundColor = "#ffd07f";
     } else if (
-      position > TimeLinePos - AboutPos / 2 &&
+      position > ExperiencePos - AboutPos / 2 &&
       position < ContactPos - AboutPos / 2
     ) {
       Body.style.backgroundColor = "#afb4ff";

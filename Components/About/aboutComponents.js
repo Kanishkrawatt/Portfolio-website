@@ -47,8 +47,9 @@ export const AboutImg = styled.div`
   aspect-ratio: 1/1;
   overflow: hidden;
   background-color: #d9f8c4;
-  border-radius: 50%;
+  border-radius: 10%;
   transition: 1s all ease;
+  border: 1rem solid #d9f8c4;
 
   @media (max-width: 480px) {
     height: 10rem;
