@@ -1,3 +1,7 @@
+/* Fill the overscroll/rubber-band area so no white shows past the top hero. */
+html {
+  background-color: #9ed2c6;
+}
 body{
   margin: 0px;
   transition: all 0.2s;
