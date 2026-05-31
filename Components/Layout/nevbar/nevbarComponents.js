@@ -21,6 +21,12 @@ export const NevbarUl = styled.ul`
   @media (max-width: 480px) {
     padding-inline-start: 10px;
   }
+
+  /* Hide the navbar on mobile — it floats over content and the bottom bar
+     didn't look good on small screens. */
+  @media (max-width: 900px) {
+    display: none;
+  }
 `;
 export const Nevbarli = styled.div`
   list-style: none;

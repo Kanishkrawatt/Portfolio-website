@@ -1,17 +1,25 @@
 import styled from "styled-components";
 
+// The site has a fixed 80px (5rem) navbar pinned to the left edge across every
+// section, so the timeline rail and left-hand cards are offset to clear it.
 export const ExperienceContainer = styled.div`
   min-height: 100vh;
   max-width: 100vw;
   width: 100%;
+  box-sizing: border-box;
   background-color: #afb4ff;
-  padding: 5rem 0 8rem 0;
+  /* Symmetric horizontal padding keeps the header centered while pushing the
+     timeline clear of the fixed navbar on narrower desktop widths. */
+  padding: 5rem 6rem 8rem 6rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-x: hidden;
 
-  @media (max-width: 768px) {
-    padding: 3rem 0 5rem 0;
+  /* On mobile the navbar moves to a bottom bar, so the cards (and the centered
+     line through them) can use the full width with symmetric padding. */
+  @media (max-width: 900px) {
+    padding: 3rem 1rem 5rem 1rem;
   }
 `;
 
@@ -22,7 +30,7 @@ export const ExperienceHeader = styled.h1`
   margin-bottom: 0.5rem;
   text-align: center;
 
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     font-size: 2.5rem;
   }
 `;
@@ -35,7 +43,7 @@ export const ExperienceSubheader = styled.p`
   margin-bottom: 4rem;
   text-align: center;
 
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     font-size: 1rem;
     margin-bottom: 3rem;
   }
@@ -58,24 +66,27 @@ export const TimelineLine = styled.div`
   background: #9c9efe;
   border-radius: 2px;
 
-  @media (max-width: 768px) {
-    left: 30px;
-    top: 70px;
-    bottom: 70px;
+  /* Single-column layout: the line stays centered on the card column and runs
+     straight down through the stacked cards (visible in the gaps between them). */
+  @media (max-width: 900px) {
+    top: 40px;
+    bottom: 40px;
   }
 `;
 
 export const TimelineItem = styled.div`
   position: relative;
   width: 100%;
+  box-sizing: border-box;
   margin-bottom: ${(props) => props.spacing || 4}rem;
   display: flex;
   justify-content: ${(props) => (props.isLeft ? "flex-start" : "flex-end")};
   align-items: center;
 
-  @media (max-width: 768px) {
-    justify-content: flex-start;
-    padding-left: 80px;
+  @media (max-width: 900px) {
+    flex-direction: column;
+    align-items: center;
+    padding-left: 0;
     margin-bottom: 4rem;
   }
 `;
@@ -86,9 +97,9 @@ export const TimelineCircle = styled.div`
   transform: translateX(-50%);
   width: 90px;
   height: 90px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #afb4ff;
   border-radius: 50%;
-  border: 5px solid #afb4ff;
+  border: 5px solid rgb(177, 225, 255);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -97,10 +108,13 @@ export const TimelineCircle = styled.div`
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   gap: 0.1rem;
 
-  @media (max-width: 768px) {
-    left: 30px;
-    width: 70px;
-    height: 70px;
+  /* Sits in normal flow above the card, centered on the line it covers. */
+  @media (max-width: 900px) {
+    position: static;
+    transform: none;
+    margin: 0 0 1.25rem 0;
+    width: 72px;
+    height: 72px;
   }
 `;
 
@@ -111,8 +125,8 @@ export const TimelineYear = styled.span`
   color: white;
   line-height: 1.2;
 
-  @media (max-width: 768px) {
-    font-size: 1.1rem;
+  @media (max-width: 900px) {
+    font-size: 1.2rem;
   }
 `;
 
@@ -125,8 +139,8 @@ export const TimelineMonth = styled.span`
   text-transform: uppercase;
   opacity: 0.9;
 
-  @media (max-width: 768px) {
-    font-size: 0.65rem;
+  @media (max-width: 900px) {
+    font-size: 0.7rem;
   }
 `;
 
@@ -138,11 +152,12 @@ export const TimelineCard = styled.div`
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
   position: relative;
   background-color: rgb(156, 158, 254);
-  margin-left: ${(props) => (props.isLeft ? "0" : "calc(55% + 1rem)")};
-  margin-right: ${(props) => (props.isLeft ? "calc(55% + 1rem)" : "0")};
+  box-sizing: border-box;
+  margin-left: ${(props) => (props.isLeft ? "0" : "55%")};
+  margin-right: ${(props) => (props.isLeft ? "55%" : "0")};
 
-  @media (max-width: 768px) {
-    width: calc(100% - 80px);
+  @media (max-width: 900px) {
+    width: 100%;
     margin-left: 0;
     margin-right: 0;
   }
@@ -179,7 +194,7 @@ export const Position = styled.h3`
   color: #2d3436;
   margin: 0 0 0.5rem 0;
 
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     font-size: 1.2rem;
   }
 `;
@@ -192,7 +207,7 @@ export const Company = styled.h4`
   margin: 0;
   font-weight: 600;
 
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     font-size: 1rem;
   }
 `;
@@ -210,7 +225,7 @@ export const JobDetails = styled.div`
   border-radius: 0.75rem;
   backdrop-filter: blur(10px);
 
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     position: static;
     align-items: flex-start;
     margin-bottom: 1rem;
@@ -248,7 +263,7 @@ export const Description = styled.p`
   margin-bottom: 1rem;
   text-align: justify;
 
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     font-size: 0.9rem;
     text-align: left;
   }
